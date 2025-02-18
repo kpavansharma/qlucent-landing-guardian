@@ -52,20 +52,12 @@ const Services = () => {
           {services.map((service, index) => (
             <div
               key={index}
-              className={`${
-                service.isFlip ? "flip-card h-[280px]" : ""
-              } perspective-1000`}
+              className="h-[280px]" // Set consistent height for all containers
             >
-              <div
-                className={`${
-                  service.isFlip
-                    ? "relative w-full h-full transition-transform duration-700 transform-style-3d hover:rotate-y-180"
-                    : "bg-white p-8 rounded-xl shadow-sm border border-purple-100 hover:shadow-md transition-all duration-300 transform hover:-translate-y-1"
-                }`}
-              >
-                {service.isFlip ? (
-                  <>
-                    <div className="absolute w-full h-full backface-hidden bg-white p-8 rounded-xl shadow-sm border border-purple-100">
+              {service.isFlip ? (
+                <div className="flip-card h-full perspective-1000">
+                  <div className="relative w-full h-full transition-transform duration-700 transform-style-3d hover:rotate-y-180">
+                    <div className="absolute w-full h-full backface-hidden bg-white p-8 rounded-xl shadow-sm border border-purple-100 flex flex-col items-center">
                       <div className="mb-4">{service.icon}</div>
                       <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
                       <p className="text-gray-600">{service.description}</p>
@@ -79,15 +71,15 @@ const Services = () => {
                         <li>Risk Assessment</li>
                       </ul>
                     </div>
-                  </>
-                ) : (
-                  <>
-                    <div className="mb-4">{service.icon}</div>
-                    <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
-                    <p className="text-gray-600">{service.description}</p>
-                  </>
-                )}
-              </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="h-full bg-white p-8 rounded-xl shadow-sm border border-purple-100 hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 flex flex-col items-center">
+                  <div className="mb-4">{service.icon}</div>
+                  <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
+                  <p className="text-gray-600">{service.description}</p>
+                </div>
+              )}
             </div>
           ))}
         </div>
