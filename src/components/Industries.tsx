@@ -1,5 +1,5 @@
 
-import { Building2, Factory, Briefcase, Hospital, Bank, ShoppingBag } from "lucide-react";
+import { Building2, Factory, Briefcase, Hospital, Landmark, ShoppingBag } from "lucide-react";
 import { useRef, useEffect } from "react";
 
 const Industries = () => {
@@ -43,7 +43,7 @@ const Industries = () => {
       description: "HIPAA-compliant security measures",
     },
     {
-      icon: <Bank className="w-12 h-12" />,
+      icon: <Landmark className="w-12 h-12" />,
       name: "Financial",
       description: "Banking-grade security systems",
     },
