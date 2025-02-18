@@ -1,5 +1,5 @@
 
-import { Shield, Cloud, Globe, Lock, Server } from "lucide-react";
+import { Shield, Cloud, Globe, Lock, Server, FileCheck } from "lucide-react";
 
 const Services = () => {
   const services = [
@@ -28,6 +28,12 @@ const Services = () => {
       title: "IT Managed & Migration Services",
       description: "Expert management and seamless migration of IT infrastructure",
     },
+    {
+      icon: <FileCheck className="w-12 h-12 text-primary" />,
+      title: "Compliance & Audit",
+      description: "Comprehensive compliance assessments and audit solutions",
+      isFlip: true,
+    },
   ];
 
   return (
@@ -46,11 +52,42 @@ const Services = () => {
           {services.map((service, index) => (
             <div
               key={index}
-              className="bg-white p-8 rounded-xl shadow-sm border border-purple-100 hover:shadow-md transition-all duration-300 transform hover:-translate-y-1"
+              className={`${
+                service.isFlip ? "flip-card h-[280px]" : ""
+              } perspective-1000`}
             >
-              <div className="mb-4">{service.icon}</div>
-              <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
-              <p className="text-gray-600">{service.description}</p>
+              <div
+                className={`${
+                  service.isFlip
+                    ? "relative w-full h-full transition-transform duration-700 transform-style-3d hover:rotate-y-180"
+                    : "bg-white p-8 rounded-xl shadow-sm border border-purple-100 hover:shadow-md transition-all duration-300 transform hover:-translate-y-1"
+                }`}
+              >
+                {service.isFlip ? (
+                  <>
+                    <div className="absolute w-full h-full backface-hidden bg-white p-8 rounded-xl shadow-sm border border-purple-100">
+                      <div className="mb-4">{service.icon}</div>
+                      <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
+                      <p className="text-gray-600">{service.description}</p>
+                    </div>
+                    <div className="absolute w-full h-full backface-hidden rotate-y-180 bg-primary p-8 rounded-xl shadow-sm text-white">
+                      <h3 className="text-xl font-semibold mb-3">Our Expertise</h3>
+                      <ul className="list-disc list-inside space-y-2">
+                        <li>ISO 27001 Certification</li>
+                        <li>GDPR Compliance</li>
+                        <li>Security Audits</li>
+                        <li>Risk Assessment</li>
+                      </ul>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="mb-4">{service.icon}</div>
+                    <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
+                    <p className="text-gray-600">{service.description}</p>
+                  </>
+                )}
+              </div>
             </div>
           ))}
         </div>

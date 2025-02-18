@@ -1,9 +1,23 @@
 
 import { Building2, Factory, Briefcase, Hospital, Landmark, ShoppingBag } from "lucide-react";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 
 const Industries = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const headlines = [
+    "Protecting enterprises across all sectors",
+    "Tailored security for every industry",
+    "Next-generation cybersecurity solutions",
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % headlines.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,7 +35,7 @@ const Industries = () => {
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Initial check
+    handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -60,15 +74,29 @@ const Industries = () => {
   ];
 
   return (
-    <section id="industries" className="py-20 bg-purple-50">
+    <section id="industries" className="py-20 bg-purple-50 overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Industries We Serve
           </h2>
-          <p className="text-lg text-gray-600">
-            Specialized security solutions across various sectors
-          </p>
+          <div className="relative h-8 overflow-hidden">
+            <div
+              className="absolute w-full transition-transform duration-500 ease-in-out"
+              style={{
+                transform: `translateY(-${currentIndex * 100}%)`,
+              }}
+            >
+              {headlines.map((headline, index) => (
+                <p
+                  key={index}
+                  className="text-lg text-gray-600 h-8 flex items-center justify-center"
+                >
+                  {headline}
+                </p>
+              ))}
+            </div>
+          </div>
         </div>
 
         <div
@@ -78,7 +106,7 @@ const Industries = () => {
           {industries.map((industry, index) => (
             <div
               key={index}
-              className="industry-card opacity-0 bg-white p-6 rounded-xl shadow-sm border border-purple-100 hover:shadow-md transition-all duration-300 transform hover:-translate-y-1"
+              className="industry-card opacity-0 bg-white p-6 rounded-xl shadow-sm border border-purple-100 hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 hover:bg-gradient-to-br hover:from-white hover:to-purple-50"
             >
               <div className="text-primary mb-4">{industry.icon}</div>
               <h3 className="text-xl font-semibold mb-2">{industry.name}</h3>
