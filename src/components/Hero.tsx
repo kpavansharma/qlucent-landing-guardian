@@ -4,17 +4,18 @@ import { Shield, Lock, Database, Code2, Laptop } from "lucide-react";
 const Hero = () => {
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-white to-purple-50">
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute inset-0 bg-grid-pattern opacity-[0.03]" />
-      </div>
-
-      {/* Abstract Cybersecurity Graphic */}
-      <div className="absolute top-1/2 right-0 transform -translate-y-1/2 opacity-10 pointer-events-none">
-        <div className="w-96 h-96 relative">
-          <div className="absolute inset-0 bg-primary rounded-full blur-3xl animate-float"></div>
-          <div className="absolute inset-4 bg-accent rounded-full blur-2xl animate-float" style={{ animationDelay: "1s" }}></div>
-          <div className="absolute inset-8 bg-secondary rounded-full blur-xl animate-float" style={{ animationDelay: "2s" }}></div>
-        </div>
+      {/* Background Video */}
+      <div className="absolute inset-0 z-0">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover opacity-30"
+        >
+          <source src="https://videos.pexels.com/video-files/29448539/12676757_2560_1440_30fps.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-b from-white/80 to-purple-50/80" />
       </div>
 
       <div className="container mx-auto px-4 pt-20 pb-16 relative z-10">

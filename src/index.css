@@ -58,7 +58,7 @@
 }
 
 /* Flip card styles */
-.perspective-1000 {
+.flip-card {
   perspective: 1000px;
 }
 
@@ -67,6 +67,7 @@
 }
 
 .backface-hidden {
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
 
@@ -77,5 +78,10 @@
 /* Hover effects similar to phunk.co.uk */
 .industry-card:hover {
   box-shadow: 0 10px 30px rgba(109, 40, 217, 0.1);
+}
+
+/* Additional flip card styles */
+.flip-card:hover .transform-style-3d {
+  transform: rotateY(180deg);
 }
 
