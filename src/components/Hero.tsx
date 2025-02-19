@@ -12,8 +12,13 @@ const Hero = () => {
           muted
           playsInline
           className="absolute inset-0 w-full h-full object-cover opacity-30"
+          poster="/lovable-uploads/238659ec-d372-4b20-9bbe-db1af26e654c.png"
         >
-          <source src="https://videos.pexels.com/video-files/29448539/12676757_2560_1440_30fps.mp4" type="video/mp4" />
+          <source 
+            src="https://videos.ctfassets.net/c1tbynmqwh7x/2Hp35YIxjFBt6Cj36Z6V9M/d79a20cf14c91f25ec6fcac961aaa7c2/12676757_2560_1440_30fps.mp4" 
+            type="video/mp4" 
+          />
+          Your browser does not support the video tag.
         </video>
         <div className="absolute inset-0 bg-gradient-to-b from-white/80 to-purple-50/80" />
       </div>

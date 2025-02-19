@@ -7,32 +7,37 @@ const Services = () => {
       icon: <Shield className="w-12 h-12 text-primary" />,
       title: "Enterprise Security",
       description: "Comprehensive security solutions for enterprise-level organizations",
+      expertise: ["Access Control", "Network Security", "Threat Detection", "24/7 Monitoring"]
     },
     {
       icon: <Cloud className="w-12 h-12 text-primary" />,
       title: "Cloud Security",
       description: "Protecting your cloud infrastructure and applications",
+      expertise: ["Cloud Migration", "AWS/Azure Security", "Data Protection", "Cloud Monitoring"]
     },
     {
       icon: <Globe className="w-12 h-12 text-primary" />,
       title: "Web Security",
       description: "Securing your web applications and online presence",
+      expertise: ["WAF Implementation", "DDoS Protection", "SSL/TLS Management", "Security Testing"]
     },
     {
       icon: <Lock className="w-12 h-12 text-primary" />,
       title: "Vulnerability Management",
       description: "Continuous monitoring and remediation of security vulnerabilities",
+      expertise: ["Vulnerability Scanning", "Risk Assessment", "Patch Management", "Security Updates"]
     },
     {
       icon: <Server className="w-12 h-12 text-primary" />,
       title: "IT Managed & Migration Services",
       description: "Expert management and seamless migration of IT infrastructure",
+      expertise: ["Infrastructure Setup", "System Migration", "24/7 Support", "Performance Monitoring"]
     },
     {
       icon: <FileCheck className="w-12 h-12 text-primary" />,
       title: "Compliance & Audit",
       description: "Comprehensive compliance assessments and audit solutions",
-      isFlip: true,
+      expertise: ["ISO 27001 Certification", "GDPR Compliance", "Security Audits", "Risk Assessment"]
     },
   ];
 
@@ -50,36 +55,26 @@ const Services = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {services.map((service, index) => (
-            <div
-              key={index}
-              className="h-[280px]" // Set consistent height for all containers
-            >
-              {service.isFlip ? (
-                <div className="flip-card h-full perspective-1000">
-                  <div className="relative w-full h-full transition-transform duration-700 transform-style-3d hover:rotate-y-180">
-                    <div className="absolute w-full h-full backface-hidden bg-white p-8 rounded-xl shadow-sm border border-purple-100 flex flex-col items-center">
-                      <div className="mb-4">{service.icon}</div>
-                      <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
-                      <p className="text-gray-600">{service.description}</p>
-                    </div>
-                    <div className="absolute w-full h-full backface-hidden rotate-y-180 bg-primary p-8 rounded-xl shadow-sm text-white">
-                      <h3 className="text-xl font-semibold mb-3">Our Expertise</h3>
-                      <ul className="list-disc list-inside space-y-2">
-                        <li>ISO 27001 Certification</li>
-                        <li>GDPR Compliance</li>
-                        <li>Security Audits</li>
-                        <li>Risk Assessment</li>
-                      </ul>
-                    </div>
+            <div key={index} className="h-[280px]">
+              <div className="flip-card h-full">
+                <div className="relative w-full h-full transition-transform duration-700 transform-style-3d cursor-pointer">
+                  {/* Front of card */}
+                  <div className="absolute w-full h-full backface-hidden bg-white p-8 rounded-xl shadow-sm border border-purple-100 flex flex-col items-center">
+                    <div className="mb-4">{service.icon}</div>
+                    <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
+                    <p className="text-gray-600 text-center">{service.description}</p>
+                  </div>
+                  {/* Back of card */}
+                  <div className="absolute w-full h-full backface-hidden rotate-y-180 bg-primary p-8 rounded-xl shadow-sm text-white">
+                    <h3 className="text-xl font-semibold mb-4">Our Expertise</h3>
+                    <ul className="list-disc list-inside space-y-2">
+                      {service.expertise.map((item, i) => (
+                        <li key={i}>{item}</li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
-              ) : (
-                <div className="h-full bg-white p-8 rounded-xl shadow-sm border border-purple-100 hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 flex flex-col items-center">
-                  <div className="mb-4">{service.icon}</div>
-                  <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
-                  <p className="text-gray-600">{service.description}</p>
-                </div>
-              )}
+              </div>
             </div>
           ))}
         </div>
