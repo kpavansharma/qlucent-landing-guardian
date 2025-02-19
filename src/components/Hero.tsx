@@ -4,16 +4,6 @@ import { Shield, Lock, Database, Code2, Laptop } from "lucide-react";
 const Hero = () => {
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-white to-purple-50">
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0">
-        <img 
-          src="/lovable-uploads/238659ec-d372-4b20-9bbe-db1af26e654c.png"
-          alt="Background"
-          className="absolute inset-0 w-full h-full object-cover opacity-30"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/80 to-purple-50/80" />
-      </div>
-
       <div className="container mx-auto px-4 pt-20 pb-16 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           <div className="animate-fadeIn opacity-0" style={{ animationDelay: "0.2s" }}>
